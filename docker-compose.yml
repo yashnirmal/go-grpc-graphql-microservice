@@ -1,2 +1,8 @@
 services:   
-  
+  account_ms:
+  catalog_ms:
+  order_ms:
+  account_db:
+  catalog_db:
+  order_db:
+  graphql_gateway:

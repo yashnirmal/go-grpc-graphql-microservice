@@ -1,0 +1,65 @@
+scalat Time
+
+type Account {
+    id: String!
+    name: String!
+    orders: [Order!]!
+}
+
+type Order {
+    id: String!
+    createdAt: Time!
+    products: [Product!]!
+    totalPrice: Float!
+}
+
+type Product {
+    id: String!
+    name: String!
+    description: String!
+    price: Float!
+}
+
+type OrderedProduct {
+    id: String!
+    name: String!
+    description: String!
+    price: Float!
+    quantity: Int!
+}
+
+input PaginationInput {
+    skip: Int!
+    limit: Int!
+}
+
+input AccountInput {
+    name: String!
+}
+
+input ProductInput {
+    name: String!
+    description: String!
+    price: Float!
+}
+
+input OrderedProductInput {
+    id: String!
+    quantity: Int!
+}
+
+input OrderInput {
+    accountId: String!
+    products: [OrderedProductInput!]!
+}
+
+type Mutation {
+    createAccount(input: AccountInput!): Account!
+    createOrder(input: OrderInput!): Order!
+    createProduct(input: ProductInput!): Product!
+}
+
+type Query {
+    accounts(pagination: PaginationInput!, id: String): [Account!]!
+    products(pagination: PaginationInput!, query: String ,id: String): [Product!]!
+}
